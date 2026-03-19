@@ -1,56 +1,69 @@
 # flutter_math_mathml
 
-MathML frontend package for the `flutter_math` package family.
+MathML parser and encoder for Flutter math packages.
 
-Current status:
+## Use This Package When
 
-- working pure Dart package
-- initial MathML encoder exists
-- initial MathML parser exists
+- you need MathML export
+- you need MathML import
+- you want TeX AST to MathML conversion
+- you are integrating with web, XML, document, or accessibility pipelines
 
-What it currently provides:
+If your goal is normal Flutter widget rendering, use `flutter_math_katex`
+instead.
 
-- MathML encoding for the shared `flutter_math_model` AST
-- MathML parsing back into the shared `flutter_math_model` AST for the current
-  package-supported presentation subset
-- support for common shared nodes:
-  - rows
-  - symbols
-  - fractions
-  - roots
-  - scripts
-  - functions
-  - paired delimiters
-  - n-ary operators
-  - accents
-  - style wrappers
-  - matrices / equation arrays
-  - raise-box / phantom
-- package-local `EnclosureNode` for future `menclose`-style parsing and
-  encoding work
+## Install
 
-Current boundary:
+```yaml
+dependencies:
+  flutter_math_mathml: ^0.1.0
+```
 
-- the encoder is intended as the first stable MathML export layer
-- the parser is intended as the first stable round-trip import layer for the
-  package's current encoder output
-- it focuses on clean, readable MathML over exact browser-specific layout
-  tuning
-- broader MathML coverage and ambiguity handling are the next major steps after
-  this package baseline
+## Quick Start
 
-Example:
+Encode MathML from a TeX AST:
 
 ```dart
 import 'package:flutter_math_mathml/flutter_math_mathml.dart';
 import 'package:flutter_math_tex/flutter_math_tex.dart';
 
-void main() {
-  final mathml = TexParser(
-    r'\frac{\mathbb{R}+1}{x_2}',
-    const TexParserSettings(),
-  ).parse().encodeMathML();
+final ast = TexParser(
+  r'\frac{\mathbb{R}+1}{x_2}',
+  const TexParserSettings(),
+).parse();
 
-  print(MathMLParser(mathml).parse().encodeMathML());
-}
+print(ast.encodeMathML());
 ```
+
+Parse MathML:
+
+```dart
+final ast = MathMLParser(
+  '<math><mfrac><mi>a</mi><mi>b</mi></mfrac></math>',
+).parse();
+
+print(ast.encodeMathML());
+```
+
+## Current Scope
+
+This package currently covers the shared presentation-math subset used by the
+project:
+
+- rows
+- symbols
+- fractions
+- roots
+- scripts
+- functions
+- paired delimiters
+- n-ary operators
+- accents
+- style wrappers
+- matrices and equation arrays
+- raise-box and phantom nodes
+
+## Current Boundary
+
+The package is aimed at useful Presentation MathML round-tripping. Broader
+MathML coverage can be added later without changing the package role.

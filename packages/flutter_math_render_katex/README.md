@@ -1,62 +1,40 @@
 # flutter_math_render_katex
 
-KaTeX renderer assets and metric lookup package for the `flutter_math` family.
+KaTeX-style renderer backend, fonts, metrics, and layout helpers for Flutter
+math packages.
 
-Current status:
+## Who Should Use This Package?
 
-- real Flutter package scaffold
-- depends on `flutter_math_model`
-- owns the bundled KaTeX font assets
-- owns the KaTeX font metric tables
-- owns the KaTeX symbol/SVG helper layer
-- owns the shared layout widgets used by the current renderer:
-  - `CustomLayout`
+Most app developers should not use this package directly.
+
+Use it if you are:
+
+- building a higher-level package such as `flutter_math_katex`
+- working on renderer internals
+- reusing KaTeX fonts, metrics, or low-level symbol/layout helpers
+
+If you want a public widget package, use `flutter_math_katex`.
+
+## What This Package Provides
+
+- bundled KaTeX font assets
+- KaTeX font metrics
+- symbol/SVG helper layer
+- shared layout widgets such as:
   - `Line`
   - `EditableLine`
   - `VList`
   - `Multiscripts`
   - `EqnArray`
   - `EquationRowView`
-  - `LayoutBuilderPreserveBaseline`
-  - `MinDimension`
-  - `RemoveBaseline`
-- owns the shared render utility layer:
-  - `infiniteConstraint`
-  - `nullDelimiterSpace`
-  - render-box layout/offset helpers
-  - type helper used by `CustomLayout`
-- exposes packaged font-family helpers for future renderer code
 
-Current API surface:
+## What It Does Not Provide
 
-- `FontMetrics`
-- `CharacterMetrics`
-- `getCharacterMetrics(...)`
-- `getGlobalMetrics(...)`
-- `KaTeXFontFamilies`
-- `katexFontAssets`
-- `MathOptions`
-- `makeBaseSymbol(...)`
-- `CustomLayout`, `Line`, `VList`, `Multiscripts`, `EqnArray`
-- `staticSvg(...)`
-- `strechySvgSpan(...)`
-- `getHeightForDelim(...)`
+- a full public widget API
+- TeX parsing by itself
+- the final selection/controller facade
 
-What is intentionally not moved yet:
+## Intended Role
 
-- the AST-specific equation-row bridge in `syntax_tree_equation_row.dart`
-- selection/controller bridge code
-- root AST/widget integration
-
-Why:
-
-- the current selection/controller bridge still depends on root-local AST and
-  widget contracts
-- the package now owns the complete low-level/generic render toolkit, but the
-  final widget facade still depends on root-local AST and controller types
-
-Next extraction target:
-
-- decide whether the remaining AST-specific syntax-tree bridge should move into
-  a higher-level `flutter_math_katex` facade package or remain in the root
-  package during the migration period
+This package is the low-level high-fidelity rendering backend under
+`flutter_math_katex`.

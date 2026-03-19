@@ -1,43 +1,37 @@
 # flutter_math_tex
 
-TeX front-end core for the `flutter_math` package family.
+TeX parser and encoder core for Flutter math packages.
 
-Current status:
+## Use This Package When
 
-- real standalone package
-- depends only on `flutter_math_model`
-- owns the TeX parsing and encoding stack:
-  - `Lexer`
-  - `Token`
-  - `SourceLocation`
-  - `ParseException`
-  - `Namespace`
-  - `TexParserSettings`
-  - `MacroDefinition` / `MacroExpansion`
-  - `MacroExpander`
-  - `TexParser`
-  - TeX function registry metadata
-  - built-in macro tables
-  - TeX symbol, color, and font tables
-  - TeX encoder
+- you need TeX parsing without Flutter widget rendering
+- you need TeX encoding from a shared AST
+- you want to build converters, editors, or import/export tools
 
-Design notes:
+Do not use this package if your only goal is to render equations in a Flutter
+UI. In that case, use `flutter_math_katex`.
 
-- parser-facing AST/value types come from `flutter_math_model`
-- shared pure Dart `StyleNode` now comes from `flutter_math_model`
-- package-local pure Dart `SymbolNode` and `EnclosureNode` complete the TeX-side
-  model surface without introducing Flutter dependencies
-- the package exposes both the high-level `tex.dart` API and low-level parser
-  primitives
+## Install
 
-Still intentionally outside this package:
+```yaml
+dependencies:
+  flutter_math_tex: ^0.1.0
+```
 
-- Flutter widget building
-- render/layout code
-- KaTeX font assets and font metrics
-- editor-specific parser extensions such as cursor nodes
+## Quick Start
 
-Example:
+```dart
+import 'package:flutter_math_tex/flutter_math_tex.dart';
+
+final ast = TexParser(
+  r'\frac{\mathbb{R}+1}{x_2}+\sqrt{y_1}',
+  const TexParserSettings(),
+).parse();
+
+print(ast.encodeTeX(conf: TexEncodeConf.mathParamConf));
+```
+
+## Macro Example
 
 ```dart
 final ast = TexParser(
@@ -49,5 +43,34 @@ final ast = TexParser(
   ),
 ).parse();
 
-print(ast.encodeTeX(conf: TexEncodeConf.mathParamConf)); // \frac{\mathbb{R}+1}{x}
+print(ast.encodeTeX(conf: TexEncodeConf.mathParamConf));
+// \frac{\mathbb{R}+1}{x}
 ```
+
+## Error Handling
+
+```dart
+try {
+  TexParser(r'\frac{1}{', const TexParserSettings()).parse();
+} on ParseException catch (error) {
+  print(error.messageWithType);
+}
+```
+
+## What This Package Owns
+
+- lexer
+- token/source location types
+- parser settings
+- macro expansion
+- TeX symbol, color, and font tables
+- TeX parser
+- TeX encoder
+
+## What It Deliberately Does Not Include
+
+- Flutter widget rendering
+- KaTeX font assets
+- selection/controller widgets
+
+Those belong in higher- or lower-level packages.

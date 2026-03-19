@@ -1,52 +1,38 @@
 # flutter_math_render_lite
 
-Small-size renderer core for the `flutter_math` package family.
+Lightweight renderer backend for Flutter math packages.
 
-Current status:
+## Who Should Use This Package?
 
-- depends on `flutter_math_model`
-- real Flutter package scaffold
-- no bundled KaTeX fonts
-- minimal future-safe low-level renderer surface:
-  - `LiteMathOptions`
-  - `LiteBuildResult`
-  - `LiteSymbol`
+Most app developers should not depend on this package directly.
+
+Use it only if you are:
+
+- building a higher-level math widget package
+- experimenting with a smaller renderer backend
+- working on the internal package split
+
+If you want a ready-to-use public widget package today, use
+`flutter_math_katex`.
+
+## What This Package Provides
+
+- system-font-based rendering without bundled KaTeX fonts
+- low-level lightweight widgets such as:
   - `LiteLine`
   - `LiteFraction`
   - `LiteSqrt`
-  - `LiteSymbolNode`
-  - `LiteSyntaxTreeView`
-  - AST-backed builder support for:
-    - `EquationRowNode`
-    - `LiteSymbolNode`
-    - `FracNodeModel`
-    - `SqrtNodeModel`
-    - `SpaceNodeModel`
-    - `FunctionNodeModel`
-    - `MultiscriptsNodeModel`
-    - `OverNodeModel`
-    - `UnderNodeModel`
-    - `LeftRightNodeModel`
-    - `StretchyOpNodeModel`
-    - `StyleNode`
-    - `AccentNodeModel`
-    - `AccentUnderNodeModel`
-    - `NaryOperatorNodeModel`
-    - `RaiseBoxNodeModel`
-    - `PhantomNodeModel`
-    - `MatrixNodeModel`
-    - `EquationArrayNodeModel`
+  - `LiteSymbol`
+- AST-backed rendering for a practical shared subset of math nodes
 
-Design notes:
+## What It Does Not Provide
 
-- this package is intentionally renderer-only
-- it uses system text rendering instead of bundled KaTeX fonts
-- it is a low-level primitive layer for the future default `flutter_math`
-  package, not the final high-level widget facade
+- TeX parsing
+- a full public widget facade
+- the same visual fidelity as the KaTeX renderer
+- selectable math widgets
 
-Still intentionally outside this package:
+## Intended Role
 
-- TeX parsing and encoding
-- AST-driven widget building
-- full delimiter/stretchy operator coverage
-- selection/controller/widget facade APIs
+This package is the low-level lightweight renderer layer for a future smaller
+default public package.

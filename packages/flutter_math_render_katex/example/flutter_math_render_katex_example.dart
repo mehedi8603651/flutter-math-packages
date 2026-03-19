@@ -6,15 +6,22 @@ void main() {
     fontName: 'AMS-Regular',
     mode: Mode.math,
   );
-
-  print(KaTeXFontFamilies.packaged(KaTeXFontFamilies.main));
-  print(metrics?.width);
-  print(
-    makeBaseSymbol(
-      symbol: '+',
-      atomType: AtomType.bin,
-      mode: Mode.math,
-      options: MathOptions.textOptions,
-    ).widget.runtimeType,
+  final plus = makeBaseSymbol(
+    symbol: '+',
+    atomType: AtomType.bin,
+    mode: Mode.math,
+    options: MathOptions.textOptions,
   );
+  final sum = makeBaseSymbol(
+    symbol: '∑',
+    atomType: AtomType.op,
+    mode: Mode.math,
+    options: MathOptions.displayOptions,
+  );
+
+  print('Packaged main font family: '
+      '${KaTeXFontFamilies.packaged(KaTeXFontFamilies.main)}');
+  print('Metric width for "A" in AMS-Regular: ${metrics?.width}');
+  print('Rendered plus widget: ${plus.widget.runtimeType}');
+  print('Rendered sum widget: ${sum.widget.runtimeType}');
 }

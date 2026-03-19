@@ -4,17 +4,26 @@ void main() {
   final tree = SyntaxTree(
     greenRoot: EquationRowNode(
       children: [
-        _TokenNode('x'),
-        _TokenNode('+', type: AtomType.bin),
-        _TokenNode('1'),
+        _TokenNode('S'),
+        _TokenNode('=', type: AtomType.rel),
+        FracNodeModel(
+          numerator: EquationRowNode(children: [_TokenNode('1')]),
+          denominator: EquationRowNode(
+            children: [
+              _TokenNode('n'),
+              _TokenNode('+', type: AtomType.bin),
+              _TokenNode('1'),
+            ],
+          ),
+        ),
       ],
     ),
   );
 
-  print(
-    '$flutterMathModelPackageName: '
-    '${tree.greenRoot.flattenedChildList.map((node) => node.toJson()).toList()}',
-  );
+  print(flutterMathModelPackageName);
+  print('Root node: ${tree.greenRoot.runtimeType}');
+  print('Flattened child count: ${tree.greenRoot.flattenedChildList.length}');
+  print('Tree JSON: ${tree.greenRoot.toJson()}');
 }
 
 final class _TokenNode extends LeafNode {

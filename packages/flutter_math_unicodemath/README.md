@@ -1,66 +1,64 @@
 # flutter_math_unicodemath
 
-UnicodeMath frontend package for the `flutter_math` package family.
+UnicodeMath parser and encoder for Flutter math packages.
 
-Current status:
+## Use This Package When
 
-- real standalone pure Dart package
-- depends only on `flutter_math_model` at runtime
-- owns an initial UnicodeMath encoder
-- owns an initial UnicodeMath parser
+- you need UnicodeMath input parsing
+- you need UnicodeMath output encoding
+- you are building conversion tools, editors, or copy/paste workflows
+- you want TeX AST to UnicodeMath conversion
 
-What the package does today:
+Most normal Flutter UI users do not need this package directly unless they are
+doing import/export or editor work.
 
-- encodes shared AST nodes into UnicodeMath-friendly plain text
-- parses a practical first UnicodeMath subset back into shared-model AST nodes
-- uses direct Unicode symbols where possible
-- maps common font styles such as bold, italic, double-struck, script,
-  fraktur, sans-serif, and monospace onto Unicode mathematical alphanumeric
-  characters when possible
-- falls back to readable command forms for nodes that do not yet have a
-  normalized UnicodeMath encoding in this package
+## Install
 
-Current parser coverage:
+```yaml
+dependencies:
+  flutter_math_unicodemath: ^0.1.0
+```
 
-- styled Unicode math letters and digits such as `ℝ` and `𝐲`
-- plain symbol rows
-- fractions with `/`
-- roots with `√`
-- subscripts and superscripts with `_` and `^`
-- function-style application for common operator names such as `sin x`
-- n-ary operators such as `∑_i^n x`
-- readable fallback commands emitted by the current encoder:
-  - `\color`
-  - `\size`
-  - `\style`
-  - `\overset`
-  - `\underset`
-  - `\accent`
-  - `\underaccent`
-  - `\enclose`
-  - `\matrix`
-  - `\eqarray`
-  - `\raise`
-  - `\phantom`
-  - `\hphantom`
-  - `\vphantom`
+## Quick Start
 
-Current boundary:
-
-- the parser is intentionally an initial subset aimed at stable round-tripping
-  of this package's current UnicodeMath encoder output
-- full UnicodeMath coverage and richer ambiguity handling still need future
-  work
-
-Example:
+Parse UnicodeMath:
 
 ```dart
-import 'package:flutter_math_model/ast.dart';
 import 'package:flutter_math_unicodemath/flutter_math_unicodemath.dart';
 
-void main() {
-  final ast = UnicodeMathParser('(ℝ+√(x_1))/𝐲').parse();
+final ast = UnicodeMathParser('(ℝ+√(x_1))/𝐲').parse();
 
-  print(ast.encodeUnicodeMath()); // (ℝ+√(x_1))/𝐲
-}
+print(ast.encodeUnicodeMath());
 ```
+
+Convert TeX AST to UnicodeMath:
+
+```dart
+import 'package:flutter_math_tex/flutter_math_tex.dart';
+import 'package:flutter_math_unicodemath/flutter_math_unicodemath.dart';
+
+final ast = TexParser(
+  r'\frac{\mathbb{R}+\sqrt{x_1}}{\mathbf{y}}',
+  const TexParserSettings(),
+).parse();
+
+print(ast.encodeUnicodeMath());
+```
+
+## Current Scope
+
+This package already handles a practical UnicodeMath subset well enough for:
+
+- styled Unicode letters
+- rows
+- fractions
+- roots
+- subscripts and superscripts
+- common operator-name functions
+- n-ary operators
+- round-tripping the package's current encoder output
+
+## Current Boundary
+
+This is not yet a full UnicodeMath specification implementation. The package
+currently focuses on useful real-world input and stable round-tripping.
