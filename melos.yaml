@@ -1,0 +1,9 @@
+name: flutter_math_packages
+
+packages:
+  - packages/**
+  - apps/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true

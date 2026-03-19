@@ -1,0 +1,6 @@
+analyzer:
+  exclude:
+    - "**/.dart_tool/**"
+    - "**/build/**"
+    - "**/.gradle/**"
+    - "**/ios/Flutter/**"

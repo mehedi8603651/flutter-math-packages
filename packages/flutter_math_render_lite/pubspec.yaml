@@ -1,0 +1,22 @@
+name: flutter_math_render_lite
+description: Small-size renderer core for the flutter_math package family.
+version: 0.1.0
+publish_to: none
+homepage: https://github.com/simpleclub/flutter_math
+repository: https://github.com/simpleclub/flutter_math
+issue_tracker: https://github.com/simpleclub/flutter_math/issues
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.38.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_math_model:
+    path: ../flutter_math_model
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints: ^6.0.0

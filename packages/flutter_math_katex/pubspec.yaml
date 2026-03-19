@@ -1,0 +1,31 @@
+name: flutter_math_katex
+description: High-fidelity KaTeX-style public facade for flutter_math during the package split migration.
+version: 0.1.0
+homepage: https://github.com/simpleclub/flutter_math
+repository: https://github.com/simpleclub/flutter_math
+issue_tracker: https://github.com/simpleclub/flutter_math/issues
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.38.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  collection: ^1.19.1
+  provider: ^6.1.5+1
+  tuple: ^2.0.2
+  flutter_math_model:
+    path: ../flutter_math_model
+  flutter_math_tex:
+    path: ../flutter_math_tex
+  flutter_math_render_katex:
+    path: ../flutter_math_render_katex
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: false

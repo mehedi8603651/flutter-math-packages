@@ -1,0 +1,21 @@
+name: flutter_math_mathml
+description: MathML frontend package for the flutter_math package family.
+version: 0.1.0
+publish_to: none
+homepage: https://github.com/simpleclub/flutter_math
+repository: https://github.com/simpleclub/flutter_math
+issue_tracker: https://github.com/simpleclub/flutter_math/issues
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter_math_model:
+    path: ../flutter_math_model
+  xml: ^6.5.0
+
+dev_dependencies:
+  flutter_math_tex:
+    path: ../flutter_math_tex
+  lints: ^6.0.0
+  test: ^1.25.6
