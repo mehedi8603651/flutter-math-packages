@@ -1,9 +1,9 @@
 name: flutter_math_model
-description: Shared AST and editing model layer for the flutter_math package family.
+description: Shared AST and semantic model layer for Flutter math packages.
 version: 0.1.0
-homepage: https://github.com/simpleclub/flutter_math
-repository: https://github.com/simpleclub/flutter_math
-issue_tracker: https://github.com/simpleclub/flutter_math/issues
+homepage: https://github.com/mehedi8603651/flutter-math-packages
+repository: https://github.com/mehedi8603651/flutter-math-packages
+issue_tracker: https://github.com/mehedi8603651/flutter-math-packages/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

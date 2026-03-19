@@ -1,20 +1,17 @@
 name: flutter_math_unicodemath
-description: UnicodeMath frontend package for the flutter_math package family.
+description: UnicodeMath parser and encoder for Flutter math packages.
 version: 0.1.0
-publish_to: none
-homepage: https://github.com/simpleclub/flutter_math
-repository: https://github.com/simpleclub/flutter_math
-issue_tracker: https://github.com/simpleclub/flutter_math/issues
+homepage: https://github.com/mehedi8603651/flutter-math-packages
+repository: https://github.com/mehedi8603651/flutter-math-packages
+issue_tracker: https://github.com/mehedi8603651/flutter-math-packages/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  flutter_math_model:
-    path: ../flutter_math_model
+  flutter_math_model: ^0.1.0
 
 dev_dependencies:
   lints: ^6.0.0
   test: ^1.25.6
-  flutter_math_tex:
-    path: ../flutter_math_tex
+  flutter_math_tex: ^0.1.0
