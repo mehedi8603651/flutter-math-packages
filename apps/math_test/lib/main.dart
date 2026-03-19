@@ -32,11 +32,11 @@ const _selectableFormula =
 const _brokenFormula = r'\frac{1}{';
 
 void main() {
-  runApp(const BanglaMathKatexApp());
+  runApp(const MathTestKatexApp());
 }
 
-class BanglaMathKatexApp extends StatelessWidget {
-  const BanglaMathKatexApp({super.key});
+class MathTestKatexApp extends StatelessWidget {
+  const MathTestKatexApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +50,13 @@ class BanglaMathKatexApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const BanglaMathKatexPage(),
+      home: const MathTestKatexPage(),
     );
   }
 }
 
-class BanglaMathKatexPage extends StatelessWidget {
-  const BanglaMathKatexPage({super.key});
+class MathTestKatexPage extends StatelessWidget {
+  const MathTestKatexPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 {
-    "name": "bangla_math_test",
-    "short_name": "bangla_math_test",
+    "name": "math_test",
+    "short_name": "math_test",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

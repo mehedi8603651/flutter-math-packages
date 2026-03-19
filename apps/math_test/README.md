@@ -1,4 +1,4 @@
-# bangla_math_test
+# math_test
 
 A new Flutter project.
 

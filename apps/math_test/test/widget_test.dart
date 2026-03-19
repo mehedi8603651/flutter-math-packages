@@ -1,10 +1,10 @@
-import 'package:bangla_math_test/main.dart';
+import 'package:math_test/main.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('flutter_math_katex demo app builds', (tester) async {
-    await tester.pumpWidget(const BanglaMathKatexApp());
+    await tester.pumpWidget(const MathTestKatexApp());
     await tester.pumpAndSettle();
 
     final pageScroll = find.byType(Scrollable).first;
